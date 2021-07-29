@@ -1,0 +1,6 @@
+C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Bison.Core\bin\Debug\Bison.Core.dll
+C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Bison.Core\bin\Debug\Bison.Core.pdb
+C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Bison.Core\obj\Debug\Bison.Core.csproj.CoreCompileInputs.cache
+C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Bison.Core\obj\Debug\Bison.Core.dll
+C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Bison.Core\obj\Debug\Bison.Core.pdb
+C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Bison.Core\obj\Debug\Bison.Core.csproj.AssemblyReference.cache
