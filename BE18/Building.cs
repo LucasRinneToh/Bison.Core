@@ -46,7 +46,7 @@ namespace Bison.Core.BE18
             TransparentConstructions = new List<TransparentConstruction>();
             OpaqueConstructions = new List<OpaqueConstruction>();
             has_unheated_space = "$";
-            has_ventilation = "$";
+            Ventilation = new List<Ventilation>();
             has_usage = "$";
             Lighting = null;
             ColdBridges = new List<ColdBridge>();
@@ -197,13 +197,17 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "has_cold_bridge", ValueType = Attributes.ValueType.OneToMany)]
         public List<ColdBridge> ColdBridges { get; set; }
 
-        // BUILDING OCCUPANCY //
+        // BUILDING OCCUPANCY & USAGE //
+        
         [FieldAttribute(XmlElementName = "has_lighting", ValueType = Attributes.ValueType.OneToOne)]
         public Lighting Lighting { get; set; }
 
+        [FieldAttribute(XmlElementName = "has_ventilation", ValueType = Attributes.ValueType.OneToMany)]
+        public List<Ventilation> Ventilation { get; set; }
+
+
 
         public string has_unheated_space { get; set; }
-        public string has_ventilation { get; set; }
         public string has_usage { get; set; }
         
         public string has_heating_systems { get; set; }
