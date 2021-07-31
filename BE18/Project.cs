@@ -1,11 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Runtime;
 
 namespace Bison.Core.BE18
 {
@@ -14,20 +16,24 @@ namespace Bison.Core.BE18
     /// </summary>
     public class Project
     {
-        [DllImport(@"C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Testing\Engine\Be18Eng.dll")]
-        static extern int IsLicenseValid();
+        [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
+        static extern bool SetDllDirectory(string lpPathName);
 
-        private string outputPath = @"C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Testing\test.bexml";
-        private string dllPath = @"C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Testing\Engine\Be18Eng.dll";
+        private string OutputPath { get; set; }
+        private string Be18Folder { get; set; }
         public XmlDocument xmlDocument;
         public BE05 Data;
 
-        public Project()
+        public Project(string outputPath, string Be18Folder)
         {
+            // Add the Be18 engine dll
+            SetDllDirectory(Be18Folder);
+
+            this.OutputPath = outputPath;
+            this.Be18Folder = Be18Folder;
+
             // Create Xml Document
             xmlDocument = new XmlDocument();
-
-            // Create an XML declaration.
             XmlDeclaration xmldecl = xmlDocument.CreateXmlDeclaration("1.0", null, null);
             xmldecl.Encoding = "ISO-8859-1";
 
@@ -41,15 +47,27 @@ namespace Bison.Core.BE18
             Data.ToXml(xmlDocument, rootNode);
         }
 
-        public void WriteToXml()
+        public void LoadEngine(string dllFolder)
         {
-            xmlDocument.Save(outputPath);
+            if (!Directory.Exists(dllFolder))
+            {
+                throw new InvalidOperationException("Unable to locate Be18 file");
+            }
+            return;
         }
 
+        public void WriteToXml()
+        {
+            xmlDocument.Save(OutputPath);
+        }
+
+        // Load functions from Be18
+        [DllImport("Be18Eng.dll")]
+        static extern int IsLicenseValid();
         public void RunCalculation()
         {
+            LoadEngine(Be18Folder);
             int licenceValid = IsLicenseValid();
-            Console.WriteLine(licenceValid);
         }
  
 
