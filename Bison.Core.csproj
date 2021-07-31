@@ -55,6 +55,8 @@
     <Compile Include="BE18\OpaqueConstruction.cs" />
     <Compile Include="BE18\Shading.cs" />
     <Compile Include="BE18\TransparentConstruction.cs" />
+    <Compile Include="BE18\Usage.cs" />
+    <Compile Include="BE18\UsageLoad.cs" />
     <Compile Include="BE18\Ventilation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
