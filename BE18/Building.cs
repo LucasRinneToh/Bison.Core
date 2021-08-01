@@ -52,7 +52,7 @@ namespace Bison.Core.BE18
             ColdBridges = new List<ColdBridge>();
             has_heating_systems = "$";
             has_cooling = "$";
-            has_heat_distribution = "$";
+            HeatDistribution = new HeatDistribution();
             has_hot_water = "$";
             has_gas_heater = "$";
             has_el_heater = "$";
@@ -178,6 +178,11 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "heat_dist", ValueType = Attributes.ValueType.Bool)]
         public bool HasHeatDistributionSystem { get; set; }
 
+        // Heat distribution system
+        [FieldAttribute(XmlElementName = "has_heat_distribution", ValueType = Attributes.ValueType.OneToOne)]
+        public HeatDistribution HeatDistribution { get; set; }
+
+
         public string basic_heat_supply { get; set; }
 
 
@@ -214,7 +219,6 @@ namespace Bison.Core.BE18
         
         public string has_heating_systems { get; set; }
         public string has_cooling { get; set; }
-        public string has_heat_distribution { get; set; }
         public string has_hot_water { get; set; }
         public string has_gas_heater { get; set; }
         public string has_el_heater { get; set; }
