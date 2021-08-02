@@ -14,10 +14,16 @@ namespace Bison.Core.BE18.Elements.HeatingSystems
         {
             this.id = null;
             this.has_solar_collector = null;
-            this.has_pv_cell = null;
+            this.PvCells = new List<PhotovoltaicCell>();
+            this.Boilers = new List<Boiler>();
         }
 
         public SolarCollector has_solar_collector { get; set; }
-        public PhotovoltaicCell has_pv_cell { get; set; }
+
+        [FieldAttribute(XmlElementName = "has_pv_cell", ValueType = Attributes.ValueType.OneToMany)]
+        public List<PhotovoltaicCell> PvCells { get; set; }
+
+        [FieldAttribute(XmlElementName = "has_boiler", ValueType = Attributes.ValueType.OneToMany)]
+        public List<Boiler> Boilers { get; set; }
     }
 }
