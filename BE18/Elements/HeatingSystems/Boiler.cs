@@ -58,7 +58,6 @@ namespace Bison.Core.BE18.Elements.HeatingSystems
             this.Fuel = fuelType;
         }
 
-
         // Sfb code
         [FieldAttribute(XmlElementName = "sfb", ValueType = Attributes.ValueType.String)]
         public string Sfb { get; set; }
