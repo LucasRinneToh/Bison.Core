@@ -51,7 +51,7 @@ namespace Bison.Core.BE18
             Lighting = null;
             ColdBridges = new List<ColdBridge>();
             has_heating_systems = "$";
-            has_cooling = "$";
+            has_cooling = null;
             HeatDistribution = new HeatDistribution();
             has_hot_water = "$";
             has_gas_heater = "$";
@@ -170,6 +170,10 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "mech_cooling", ValueType = Attributes.ValueType.Bool)]
         public bool mech_cooling { get; set; }
 
+        // Cooling
+        [FieldAttribute(XmlElementName = "has_cooling", ValueType = Attributes.ValueType.OneToOne)]
+        public Cooling has_cooling { get; set; }
+
         // Mechanical cooling, fraction of net floor area [0-1]
         [FieldAttribute(XmlElementName = "cooling_frac", ValueType = Attributes.ValueType.Double)]
         public double Cooling_Fraction { get; set; }
@@ -218,7 +222,6 @@ namespace Bison.Core.BE18
         public string has_unheated_space { get; set; }
         
         public string has_heating_systems { get; set; }
-        public string has_cooling { get; set; }
         public string has_hot_water { get; set; }
         public string has_gas_heater { get; set; }
         public string has_el_heater { get; set; }
