@@ -56,7 +56,7 @@ namespace Bison.Core.BE18
             HeatDistribution = new HeatDistribution();
             DhwSystem = new DhwSystem();
             has_gas_heater = "$";
-            has_el_heater = "$";
+            ElectricHeater = new DhwElectricHeater();
             has_descript = "$";
             has_comments = "$";
             has_heated_room = "$";
@@ -222,12 +222,15 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "has_hot_water", ValueType = Attributes.ValueType.OneToOne)]
         public DhwSystem DhwSystem { get; set; }
 
+        [FieldAttribute(XmlElementName = "has_el_heater", ValueType = Attributes.ValueType.OneToOne)]
+        public DhwElectricHeater ElectricHeater { get; set; }
+
+
 
         public string has_unheated_space { get; set; }
         
         public string has_heating_systems { get; set; }
         public string has_gas_heater { get; set; }
-        public string has_el_heater { get; set; }
         public string has_descript { get; set; }
         public string has_comments { get; set; }
         public string has_heated_room { get; set; }
