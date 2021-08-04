@@ -57,7 +57,7 @@ namespace Bison.Core.BE18
             DhwSystem = new DhwSystem();
             GasHeater = new DhwGasHeater();
             ElectricHeater = new DhwElectricHeater();
-            has_descript = "$";
+            Description = new Description();
             has_comments = "$";
             has_heated_room = "$";
         }
@@ -100,6 +100,10 @@ namespace Bison.Core.BE18
         // Number of building units
         [FieldAttribute(XmlElementName = "dwellings", ValueType = Attributes.ValueType.Double)]
         public int Dwellings { get; set; }
+
+        // Description
+        [FieldAttribute(XmlElementName = "has_descript", ValueType = Attributes.ValueType.String)]
+        public Description Description { get; set; }
 
 
         // TEMPERATURE SETTINGS //
@@ -235,7 +239,6 @@ namespace Bison.Core.BE18
         public string has_unheated_space { get; set; }
         
         public string has_heating_systems { get; set; }
-        public string has_descript { get; set; }
         public string has_comments { get; set; }
         public string has_heated_room { get; set; }
     }
