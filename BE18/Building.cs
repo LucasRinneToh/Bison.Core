@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
+using Bison.Core.BE18.Elements.DomesticHotWater;
 
 namespace Bison.Core.BE18
 {
@@ -53,7 +54,7 @@ namespace Bison.Core.BE18
             has_heating_systems = "$";
             has_cooling = null;
             HeatDistribution = new HeatDistribution();
-            has_hot_water = "$";
+            DhwSystem = new DhwSystem();
             has_gas_heater = "$";
             has_el_heater = "$";
             has_descript = "$";
@@ -217,12 +218,14 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "has_usage", ValueType = Attributes.ValueType.OneToOne)]
         public Usage Usage { get; set; }
 
+        // DOMESTIC HOT WATER //
+        [FieldAttribute(XmlElementName = "has_hot_water", ValueType = Attributes.ValueType.OneToOne)]
+        public DhwSystem DhwSystem { get; set; }
 
 
         public string has_unheated_space { get; set; }
         
         public string has_heating_systems { get; set; }
-        public string has_hot_water { get; set; }
         public string has_gas_heater { get; set; }
         public string has_el_heater { get; set; }
         public string has_descript { get; set; }
