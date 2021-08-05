@@ -42,7 +42,7 @@ namespace Bison.Core.BE18
             ae2 = 0;
             HeatedBasementArea = 0;
             BuildingType = BuildingTypes.Other;
-            basic_heat_supply = ".SUP_DISTRICT.";
+            HeatSupplyType = HeatSupplyTypes.Boiler;
             CalculationType = CalculationTypes.ActualConditions;
             TransparentConstructions = new List<TransparentConstruction>();
             OpaqueConstructions = new List<OpaqueConstruction>();
@@ -191,7 +191,8 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "has_heat_distribution", ValueType = Attributes.ValueType.OneToOne)]
         public HeatDistribution HeatDistribution { get; set; }
 
-        public string basic_heat_supply { get; set; }
+        [FieldAttribute(XmlElementName = "basic_heat_supply", ValueType = Attributes.ValueType.String)]
+        public string HeatSupplyType { get; set; }
         #endregion
 
         #region CLIMATE SCREEN
@@ -255,5 +256,14 @@ namespace Bison.Core.BE18
             ReferenceBuilding = ".REF.",
             SavingsProposal = ".SAVINGS.",
             Other = ".OTHER.";
+    }
+
+    public static class HeatSupplyTypes
+    {
+        public const string
+            Boiler = ".SUP_BOILER.",
+            DistrictHeating = ".SUP_DISTRICT.",
+            BlockHeating = ".SUP_BLOCK.",
+            Electricity = ".SUP_EL.";
     }
 }
