@@ -62,8 +62,7 @@ namespace Bison.Core.BE18
             has_heated_room = "$";
         }
 
-        // BASIC BUILDING INFO //
-
+        #region BASIC BUILDING DATA
         // Heated floor area [m2]
         [FieldAttribute(XmlElementName = "ae", ValueType = Attributes.ValueType.Double)]
         public double Heated_Floor_Area { get; set; }
@@ -104,10 +103,10 @@ namespace Bison.Core.BE18
         // Description
         [FieldAttribute(XmlElementName = "has_descript", ValueType = Attributes.ValueType.String)]
         public Description Description { get; set; }
+        #endregion
 
 
-        // TEMPERATURE SETTINGS //
-
+        #region TEMPERATURE SETTINGS
         // Room heating setpoint [*C]
         [FieldAttribute(XmlElementName = "th_heat", ValueType = Attributes.ValueType.Double)]
         public double Setpoint_Heating { get; set; }
@@ -134,10 +133,10 @@ namespace Bison.Core.BE18
 
         public double th_store { get; set; }
         public double dim_store_temp { get; set; }
+        #endregion
 
 
-        // HEATING SYSTEM SELECTORS //
-
+        #region HEATING SYSTEM SELECTORS
         // Has electric radiators (1. El-radiator)
         [FieldAttribute(XmlElementName = "sup_heating", ValueType = Attributes.ValueType.Bool)]
         public bool Has_Electric_Radiators { get; set; }
@@ -160,17 +159,17 @@ namespace Bison.Core.BE18
 
         [FieldAttribute(XmlElementName = "windmill", ValueType = Attributes.ValueType.Bool)]
         public bool Has_Windmill { get; set; }
+        #endregion
 
-        // CALCULATION SETTINGS //
-        
+        #region CALCULATION SETTINGS
         // Addition to energy frame (only applicable to non-residential buildings) [kWh/m2 year]
         [FieldAttribute(XmlElementName = "add_eframe", ValueType = Attributes.ValueType.Double)]
         public double AdditionToEnergyFrame { get; set; }
 
         public string calc_condition { get; set; }
+        #endregion
 
-        // SYSTEMS SETTINGS //
-
+        #region SYSTEMS SETTINGS
         // Has mechanical cooling
         [FieldAttribute(XmlElementName = "mech_cooling", ValueType = Attributes.ValueType.Bool)]
         public bool mech_cooling { get; set; }
@@ -191,14 +190,10 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "has_heat_distribution", ValueType = Attributes.ValueType.OneToOne)]
         public HeatDistribution HeatDistribution { get; set; }
 
-
         public string basic_heat_supply { get; set; }
+        #endregion
 
-
-
-
-        // BUILDING PARTS //
-
+        #region Climate screen
         // Transparent constructions [windows, doors, glazing units etc..]
         [FieldAttribute(XmlElementName = "has_transp_const", ValueType = Attributes.ValueType.OneToMany)]
         public List<TransparentConstruction> TransparentConstructions { get; set; }
@@ -210,9 +205,9 @@ namespace Bison.Core.BE18
         // Cold bridges [foundation, windows etc..]
         [FieldAttribute(XmlElementName = "has_cold_bridge", ValueType = Attributes.ValueType.OneToMany)]
         public List<ColdBridge> ColdBridges { get; set; }
+        #endregion
 
-        // BUILDING OCCUPANCY & USAGE //
-        
+        #region BUILDING OCCUPANCY & USAGE
         [FieldAttribute(XmlElementName = "has_lighting", ValueType = Attributes.ValueType.OneToOne)]
         public Lighting Lighting { get; set; }
 
@@ -221,9 +216,9 @@ namespace Bison.Core.BE18
 
         [FieldAttribute(XmlElementName = "has_usage", ValueType = Attributes.ValueType.OneToOne)]
         public Usage Usage { get; set; }
+        #endregion
 
-        // DOMESTIC HOT WATER //
-
+        #region DOMESTIC HOT WATER
         [FieldAttribute(XmlElementName = "has_hot_water", ValueType = Attributes.ValueType.OneToOne)]
         public DhwSystem DhwSystem { get; set; }
 
@@ -232,12 +227,9 @@ namespace Bison.Core.BE18
 
         [FieldAttribute(XmlElementName = "has_gas_heater", ValueType = Attributes.ValueType.OneToOne)]
         public DhwGasHeater GasHeater { get; set; }
-
-
-
+        #endregion
 
         public string has_unheated_space { get; set; }
-        
         public string has_heating_systems { get; set; }
         public string has_comments { get; set; }
         public string has_heated_room { get; set; }
