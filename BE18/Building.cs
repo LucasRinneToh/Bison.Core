@@ -43,7 +43,7 @@ namespace Bison.Core.BE18
             HeatedBasementArea = 0;
             BuildingType = BuildingTypes.Other;
             basic_heat_supply = ".SUP_DISTRICT.";
-            calc_condition = ".ACTUAL.";
+            CalculationType = CalculationTypes.ActualConditions;
             TransparentConstructions = new List<TransparentConstruction>();
             OpaqueConstructions = new List<OpaqueConstruction>();
             has_unheated_space = "$";
@@ -165,7 +165,9 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "add_eframe", ValueType = Attributes.ValueType.Double)]
         public double AdditionToEnergyFrame { get; set; }
 
-        public string calc_condition { get; set; }
+        // Calculation type
+        [FieldAttribute(XmlElementName = "calc_condition", ValueType = Attributes.ValueType.String)]
+        public string CalculationType { get; set; }
         #endregion
 
         #region SYSTEMS SETTINGS
@@ -244,4 +246,14 @@ namespace Bison.Core.BE18
             Other = ".ATYPE.";
     }
 
+    public static class CalculationTypes
+    {
+        public const string
+            Certification = ".STANDARD.",
+            CertificationReference = ".STDREF.",
+            ActualConditions = ".ACTUAL.",
+            ReferenceBuilding = ".REF.",
+            SavingsProposal = ".SAVINGS.",
+            Other = ".OTHER.";
+    }
 }
