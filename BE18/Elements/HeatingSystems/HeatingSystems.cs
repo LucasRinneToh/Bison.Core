@@ -19,6 +19,7 @@ namespace Bison.Core.BE18.Elements.HeatingSystems
             this.DistrictHeatExchanger = null;
             this.SupplementalRoomHeating = null;
             this.HeatPumps = new List<HeatPump>();
+            this.Windmills = new List<Windmill>();
         }
 
         [FieldAttribute(XmlElementName = "has_solar_collector", ValueType = Attributes.ValueType.OneToOne)]
@@ -38,5 +39,8 @@ namespace Bison.Core.BE18.Elements.HeatingSystems
 
         [FieldAttribute(XmlElementName = "has_heat_pump", ValueType = Attributes.ValueType.OneToMany)]
         public List<HeatPump> HeatPumps { get; set; }
+
+        [FieldAttribute(XmlElementName = "has_wind_mill", ValueType = Attributes.ValueType.OneToMany)]
+        public List<Windmill> Windmills { get; set; }
     }
 }

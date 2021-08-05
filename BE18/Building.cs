@@ -52,7 +52,7 @@ namespace Bison.Core.BE18
             Lighting = null;
             ColdBridges = new List<ColdBridge>();
             has_heating_systems = "$";
-            has_cooling = null;
+            Cooling = null;
             HeatDistribution = new HeatDistribution();
             DhwSystem = new DhwSystem();
             GasHeater = new DhwGasHeater();
@@ -177,7 +177,7 @@ namespace Bison.Core.BE18
 
         // Cooling
         [FieldAttribute(XmlElementName = "has_cooling", ValueType = Attributes.ValueType.OneToOne)]
-        public Cooling has_cooling { get; set; }
+        public Cooling Cooling { get; set; }
 
         // Mechanical cooling, fraction of net floor area [0-1]
         [FieldAttribute(XmlElementName = "cooling_frac", ValueType = Attributes.ValueType.Double)]
@@ -240,10 +240,10 @@ namespace Bison.Core.BE18
     public static class BuildingTypes
     {
         public const string
-            DetachedDwellings = ".FTYPE.",
-            SemiDetachedDwellings = ".STYPE.",
-            MultiStoreyDwellings = ".ETYPE.",
-            Warehouse = ".LTYPE.",
+            Detached = ".FTYPE.",
+            Nondetached = ".STYPE.",
+            MultiStorey = ".ETYPE.",
+            Store = ".LTYPE.",
             Other = ".ATYPE.";
     }
 
