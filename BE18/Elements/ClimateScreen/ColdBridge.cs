@@ -14,30 +14,48 @@ namespace Bison.Core.BE18
             string name = "New cold bridge",
             double length = 0,
             double heatLossCoefficient = 0,
-            double part = 0,
-            double td_in = 20,
-            double td_out = -12,
-            string sfb = null,
-            double b_value = 1
+            double indoorTemp = 20,
+            double exteriorTemp = -12,
+            double b_value = 1,
+            string sfb = null
             ) 
         {
             this.id = name;
-            this.area = length;
-            this.u = heatLossCoefficient;
-            this.part = part;
-            this.td_in = td_in;
-            this.td_out = td_out;
-            this.sfb = sfb;
-            this.has_b = b_value;
+            this.Length = length;
+            this.HeatLossCoefficient = heatLossCoefficient;
+            this.part = 0;
+            this.IndoorTemp = indoorTemp;
+            this.ExteriorTemp = exteriorTemp;
+            this.Sfb = sfb;
+            this.b_Value = b_value;
         }
 
-        public double area { get; set; } // Length of cold bridge [m]
-        public double u { get; set; } // Thermal heat coefficient of cold bridge [W/mK]
-        public double part { get; set; } //
-        public double td_in { get; set; } // Dimensioning indoor temperature
-        public double td_out { get; set; } // Dimensioning outdoor temperature
-        public string sfb { get; set; } // sfb-code
-        public double has_b { get; set; } // b-value
+        // Length of cold bridge [m]
+        [FieldAttribute(XmlElementName = "area", ValueType = Attributes.ValueType.Double)]
+        public double Length { get; set; }
 
+        // Thermal heat coefficient of cold bridge [W/mK]
+        [FieldAttribute(XmlElementName = "u", ValueType = Attributes.ValueType.Double)]
+        public double HeatLossCoefficient { get; set; }
+
+        // Part
+        [FieldAttribute(XmlElementName = "part", ValueType = Attributes.ValueType.Double)]
+        public double part { get; set; }
+
+        // Dimensioning indoor temperature
+        [FieldAttribute(XmlElementName = "td_in", ValueType = Attributes.ValueType.Double)]
+        public double IndoorTemp { get; set; }
+
+        // Dimensioning outdoor temperature
+        [FieldAttribute(XmlElementName = "td_out", ValueType = Attributes.ValueType.Double)]
+        public double ExteriorTemp { get; set; }
+
+        // Sfb code
+        [FieldAttribute(XmlElementName = "sfb", ValueType = Attributes.ValueType.String)]
+        public string Sfb { get; set; }
+
+        // b-value
+        [FieldAttribute(XmlElementName = "has_b", ValueType = Attributes.ValueType.Double)]
+        public double b_Value { get; set; } 
     }
 }
