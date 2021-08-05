@@ -41,7 +41,7 @@ namespace Bison.Core.BE18
             Cooling_Fraction = 0;
             ae2 = 0;
             Heated_Basement_Area = 0;
-            has_btype = BuildingType.AType;
+            BuildingType = BuildingTypes.Other;
             basic_heat_supply = ".SUP_DISTRICT.";
             calc_condition = ".ACTUAL.";
             TransparentConstructions = new List<TransparentConstruction>();
@@ -94,7 +94,8 @@ namespace Bison.Core.BE18
         public double Rotation { get; set; }
 
         // Building Type
-        public string has_btype { get; set; }
+        [FieldAttribute(XmlElementName = "has_btype", ValueType = Attributes.ValueType.String)]
+        public string BuildingType { get; set; }
 
         // Number of building units
         [FieldAttribute(XmlElementName = "dwellings", ValueType = Attributes.ValueType.Double)]
@@ -104,7 +105,6 @@ namespace Bison.Core.BE18
         [FieldAttribute(XmlElementName = "has_descript", ValueType = Attributes.ValueType.String)]
         public Description Description { get; set; }
         #endregion
-
 
         #region TEMPERATURE SETTINGS
         // Room heating setpoint [*C]
@@ -134,7 +134,6 @@ namespace Bison.Core.BE18
         public double th_store { get; set; }
         public double dim_store_temp { get; set; }
         #endregion
-
 
         #region HEATING SYSTEM SELECTORS
         // Has electric radiators (1. El-radiator)
@@ -235,10 +234,14 @@ namespace Bison.Core.BE18
         public string has_heated_room { get; set; }
     }
 
-    public static class BuildingType
+    public static class BuildingTypes
     {
         public const string
-            AType = ".ATYPE.";
+            DetachedDwellings = ".FTYPE.",
+            SemiDetachedDwellings = ".STYPE.",
+            MultiStoreyDwellings = ".ETYPE.",
+            Warehouse = ".LTYPE.",
+            Other = ".ATYPE.";
     }
 
 }
