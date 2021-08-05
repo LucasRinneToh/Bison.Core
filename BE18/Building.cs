@@ -14,33 +14,33 @@ namespace Bison.Core.BE18
         public Building()
         {
             id = "New Building";
-            Heated_Floor_Area = 0;
-            Setpoint_Heating = 20;
-            Setpoint_Venting = 23;
-            Setpoint_Night_Vent = 24;
-            Setpoint_Mech_Cooling = 25;
+            HeatedFloorArea = 0;
+            SetpointHeating = 20;
+            SetpointVenting = 23;
+            SetpointNightVent = 24;
+            SetpointMechCooling = 25;
             HeatCapacity = 40;
-            Dim_Room_Temp = 20;
+            DimRoomTemp = 20;
             UsagePerWeek = 168;
             StartTime = 0;
             EndTime = 24;
             DimOutdoorTemp = -12;
             mech_cooling = false;
-            Has_Electric_Radiators = false;
-            Has_Solar_Heating = false;
-            Has_Heatpump = false;
-            Has_PV_Panels = false;
+            HasElectricRadiators = false;
+            HasSolarHeating = false;
+            HasHeatpump = false;
+            HasPvPanels = false;
             Rotation = 0;
             AdditionToEnergyFrame = 0;
-            Has_Oven = false;
+            HasOven = false;
             HasHeatDistributionSystem = false;
             Dwellings = 1;
-            Has_Windmill = false;
+            HasWindmill = false;
             th_store = 15;
             dim_store_temp = 15;
             Cooling_Fraction = 0;
             ae2 = 0;
-            Heated_Basement_Area = 0;
+            HeatedBasementArea = 0;
             BuildingType = BuildingTypes.Other;
             basic_heat_supply = ".SUP_DISTRICT.";
             calc_condition = ".ACTUAL.";
@@ -65,13 +65,13 @@ namespace Bison.Core.BE18
         #region BASIC BUILDING DATA
         // Heated floor area [m2]
         [FieldAttribute(XmlElementName = "ae", ValueType = Attributes.ValueType.Double)]
-        public double Heated_Floor_Area { get; set; }
+        public double HeatedFloorArea { get; set; }
 
         public double ae2 { get; set; }
 
         // Heated basement area [m2]
         [FieldAttribute(XmlElementName = "ae3", ValueType = Attributes.ValueType.Double)]
-        public double Heated_Basement_Area { get; set; } 
+        public double HeatedBasementArea { get; set; } 
 
         // Building Heat Capacity [Wh/m2K]
         [FieldAttribute(XmlElementName = "heat_cap", ValueType = Attributes.ValueType.Double)]
@@ -109,23 +109,23 @@ namespace Bison.Core.BE18
         #region TEMPERATURE SETTINGS
         // Room heating setpoint [*C]
         [FieldAttribute(XmlElementName = "th_heat", ValueType = Attributes.ValueType.Double)]
-        public double Setpoint_Heating { get; set; }
+        public double SetpointHeating { get; set; }
 
         // Venting setpoint [*C]
         [FieldAttribute(XmlElementName = "th_setp", ValueType = Attributes.ValueType.Double)]
-        public double Setpoint_Venting { get; set; }
+        public double SetpointVenting { get; set; }
 
         // Night ventilation setpoint [*C]
         [FieldAttribute(XmlElementName = "th_nv", ValueType = Attributes.ValueType.Double)]
-        public double Setpoint_Night_Vent { get; set; }
+        public double SetpointNightVent { get; set; }
 
         // Mechanical cooling setpoint [*C]
         [FieldAttribute(XmlElementName = "th_cool", ValueType = Attributes.ValueType.Double)]
-        public double Setpoint_Mech_Cooling { get; set; }
+        public double SetpointMechCooling { get; set; }
 
         // Dimensioning indoor temperature [*C]
         [FieldAttribute(XmlElementName = "dim_room_temp", ValueType = Attributes.ValueType.Double)]
-        public double Dim_Room_Temp { get; set; }
+        public double DimRoomTemp { get; set; }
         
         // Dimensioning outdoor temperature [*C]
         [FieldAttribute(XmlElementName = "tu", ValueType = Attributes.ValueType.Double)]
@@ -138,26 +138,26 @@ namespace Bison.Core.BE18
         #region HEATING SYSTEM SELECTORS
         // Has electric radiators (1. El-radiator)
         [FieldAttribute(XmlElementName = "sup_heating", ValueType = Attributes.ValueType.Bool)]
-        public bool Has_Electric_Radiators { get; set; }
+        public bool HasElectricRadiators { get; set; }
 
         // Has oven heating (2. Brændeovne, gasvarmere etc.)
         [FieldAttribute(XmlElementName = "sup_oven", ValueType = Attributes.ValueType.Bool)]
-        public bool Has_Oven { get; set; }
+        public bool HasOven { get; set; }
         
         // Has solar heating (3. Solvarme)
         [FieldAttribute(XmlElementName = "solarpanel", ValueType = Attributes.ValueType.Bool)]
-        public bool Has_Solar_Heating { get; set; }
+        public bool HasSolarHeating { get; set; }
 
         // Has heat-pump (4. Varmepumpe)
         [FieldAttribute(XmlElementName = "heatpump", ValueType = Attributes.ValueType.Bool)]
-        public bool Has_Heatpump { get; set; }
+        public bool HasHeatpump { get; set; }
 
         // Has photovoltaics (5. Solceller)
         [FieldAttribute(XmlElementName = "pv_panel", ValueType = Attributes.ValueType.Bool)]
-        public bool Has_PV_Panels { get; set; }
+        public bool HasPvPanels { get; set; }
 
         [FieldAttribute(XmlElementName = "windmill", ValueType = Attributes.ValueType.Bool)]
-        public bool Has_Windmill { get; set; }
+        public bool HasWindmill { get; set; }
         #endregion
 
         #region CALCULATION SETTINGS
@@ -192,7 +192,7 @@ namespace Bison.Core.BE18
         public string basic_heat_supply { get; set; }
         #endregion
 
-        #region Climate screen
+        #region CLIMATE SCREEN
         // Transparent constructions [windows, doors, glazing units etc..]
         [FieldAttribute(XmlElementName = "has_transp_const", ValueType = Attributes.ValueType.OneToMany)]
         public List<TransparentConstruction> TransparentConstructions { get; set; }
