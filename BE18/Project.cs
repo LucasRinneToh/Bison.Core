@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Runtime;
+using System.Globalization;
+using System.Threading;
 
 namespace Bison.Core.BE18
 {
@@ -29,6 +31,9 @@ namespace Bison.Core.BE18
 
         public Project(string outputPath, string Be18Folder)
         {
+            // Apply en-US to render numeric values with dot instead of comma
+            Thread.CurrentThread.CurrentCulture = CultureInfo.GetCultureInfo("en-US");
+
             // Add the Be18 engine dll
             SetDllDirectory(Be18Folder);
 
@@ -69,12 +74,24 @@ namespace Bison.Core.BE18
         // Load functions from Be18
         [DllImport("Be18Eng.dll")]
         static extern int IsLicenseValid();
+        [DllImport("Be18Eng.dll")]
+        static extern int Be06Keys(StringBuilder buffer, StringBuilder memory, ref int status, int uk);
+
         public void RunCalculation()
         {
             LoadEngine(Be18Folder);
             int licenceValid = IsLicenseValid();
-        }
- 
 
+            // Read XML file
+            string testPath = File.ReadAllText(@"C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Testing\Eksempel_v9_Administration.bexml");
+
+            int bufferSize = 100000;
+            StringBuilder modelStringBuffer = new StringBuilder(testPath, bufferSize);
+            StringBuilder mem = new StringBuilder(bufferSize);
+            int status = bufferSize;
+
+            int res = Be06Keys(modelStringBuffer, mem, ref status, 1);
+            Console.WriteLine(mem);
+        }
     }
 }

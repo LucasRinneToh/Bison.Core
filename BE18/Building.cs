@@ -18,7 +18,7 @@ namespace Bison.Core.BE18
         public Building()
         {
             id = "New Building";
-            HeatedFloorArea = 0;
+            HeatedFloorArea = 0.2;
             SetpointHeating = 20;
             SetpointVenting = 23;
             SetpointNightVent = 24;
@@ -106,7 +106,7 @@ namespace Bison.Core.BE18
         public int Dwellings { get; set; }
 
         // Description
-        [FieldAttribute(XmlElementName = "has_descript", ValueType = Attributes.ValueType.String)]
+        [FieldAttribute(XmlElementName = "has_descript", ValueType = Attributes.ValueType.OneToOne)]
         public Description Description { get; set; }
         #endregion
 

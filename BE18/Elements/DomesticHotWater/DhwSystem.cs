@@ -8,8 +8,20 @@ using Bison.Core.BE18.Attributes;
 namespace Bison.Core.BE18.Elements.DomesticHotWater
 {
     [ModelAttribute(ElementName = "DHW_SYSTEM")]
-    public class DhwSystem
+    public class DhwSystem : BeElement
     {
+        public DhwSystem(
+            string name = "DHW system",
+            double consumption = 100,
+            double temperature = 60
+            )
+        {
+            this.id = name;
+            this.Consumption = consumption;
+            this.Temperature = temperature;
+            this.Tanks = new List<DhwTank>();
+        }
+
         // Sfb code
         [FieldAttribute(XmlElementName = "sfb", ValueType = Attributes.ValueType.String)]
         public string Sfb { get; set; }
