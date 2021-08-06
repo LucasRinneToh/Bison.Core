@@ -16,13 +16,16 @@ namespace Bison.Core.BE18
     /// </summary>
     public class Project
     {
+        // Use kernel32 to import SetDllDirectory method
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern bool SetDllDirectory(string lpPathName);
 
-        private string OutputPath { get; set; }
-        private string Be18Folder { get; set; }
+        private string OutputPath { get; set; } // Path to output .bexml file
+        private string Be18Folder { get; set; } // Path to folder that includes the Be18Eng.dll file
+        
         public XmlDocument xmlDocument;
         public BE05 Data;
+        public Building Building { get; set; } // Direct accessor to building
 
         public Project(string outputPath, string Be18Folder)
         {
@@ -45,6 +48,8 @@ namespace Bison.Core.BE18
             // Create defaults
             Data = new BE05();
             Data.ToXml(xmlDocument, rootNode);
+
+            Building = Data.Building;
         }
 
         public void LoadEngine(string dllFolder)
