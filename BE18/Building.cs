@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
 using Bison.Core.BE18.Elements.DomesticHotWater;
 using Bison.Core.BE18.Elements.Ventilation;
+using Bison.Core.BE18.Elements.HeatingSystems;
 
 namespace Bison.Core.BE18
 {
@@ -52,7 +53,7 @@ namespace Bison.Core.BE18
             Usage = null;
             Lighting = null;
             ColdBridges = new List<ColdBridge>();
-            has_heating_systems = "$";
+            HeatingSystem = new HeatingSystems();
             Cooling = null;
             HeatDistribution = new HeatDistribution();
             DhwSystem = new DhwSystem();
@@ -194,6 +195,10 @@ namespace Bison.Core.BE18
 
         [FieldAttribute(XmlElementName = "basic_heat_supply", ValueType = Attributes.ValueType.String)]
         public string HeatSupplyType { get; set; }
+
+        [FieldAttribute(XmlElementName = "has_heating_systems", ValueType = Attributes.ValueType.OneToOne)]
+        public HeatingSystems HeatingSystem { get; set; }
+
         #endregion
 
         #region CLIMATE SCREEN
@@ -233,7 +238,6 @@ namespace Bison.Core.BE18
         #endregion
 
         public string has_unheated_space { get; set; }
-        public string has_heating_systems { get; set; }
         public string has_comments { get; set; }
         public string has_heated_room { get; set; }
     }
