@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18
+namespace Bison.Core.BE18.Elements.Lighting
 {
     [ModelAttribute(ElementName = "LIGHTING")]
     public class Lighting : BeElement
@@ -22,7 +22,6 @@ namespace Bison.Core.BE18
             this.has_light_add = has_light_add;
         }
 
-
         // sfb code
         [FieldAttribute(XmlElementName = "sfb", ValueType = Attributes.ValueType.String)]
         public string sfb { get; set; }
@@ -38,6 +37,5 @@ namespace Bison.Core.BE18
         // has_light_add // TO-DO: figure out what this does
         [FieldAttribute(XmlElementName = "has_light_add", ValueType = Attributes.ValueType.Double)]
         public double has_light_add { get; set; }
-
     }
 }

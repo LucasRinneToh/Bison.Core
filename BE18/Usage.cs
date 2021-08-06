@@ -7,7 +7,7 @@ using Bison.Core.BE18.Attributes;
 
 namespace Bison.Core.BE18
 {
-    [ModelAttribute(ElementName = "VENTILATION")]
+    [ModelAttribute(ElementName = "USAGE")]
     public class Usage : BeElement
     {
         public Usage(

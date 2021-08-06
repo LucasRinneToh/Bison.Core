@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18.Elements.HeatingPipes
+namespace Bison.Core.BE18.Elements.HeatDistribution
 {
     [ModelAttribute(ElementName = "HEAT_TUBE")]
     public class HeatingPipe : BeElement

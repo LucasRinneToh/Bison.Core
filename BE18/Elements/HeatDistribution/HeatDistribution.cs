@@ -4,9 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
-using Bison.Core.BE18.Elements.HeatingPipes;
 
-namespace Bison.Core.BE18
+namespace Bison.Core.BE18.Elements.HeatDistribution
 {
     [ModelAttribute(ElementName = "HEAT_DISTRIBUTION")]
     public class HeatDistribution : BeElement
@@ -66,7 +65,6 @@ namespace Bison.Core.BE18
         // Heating pipes
         [FieldAttribute(XmlElementName = "has_tube", ValueType = Attributes.ValueType.OneToMany)]
         public List<HeatingPipe> Pipes { get; set; }
-
     }
 
     public static class HeatDistributionType
