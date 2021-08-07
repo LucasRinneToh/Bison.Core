@@ -37,30 +37,13 @@ namespace Bison.Core.BE18
             // Add the Be18 engine dll
             SetDllDirectory(Be18Folder);
 
-            // Create XML document
-            CreateXmlDocument();
-
             // Create defaults
             Data = new BE05();
-            Data.ToXml(xmlDocument, xmlDocument.DocumentElement);
             Building = Data.Building;
 
             // Set values
             this.OutputPath = outputPath;
             this.Be18Folder = Be18Folder;
-        }
-
-        public void CreateXmlDocument()
-        {
-            // Create Xml Document
-            xmlDocument = new XmlDocument();
-            XmlDeclaration xmldecl = xmlDocument.CreateXmlDeclaration("1.0", null, null);
-            xmldecl.Encoding = "ISO-8859-1";
-
-            // Create Root node
-            XmlElement rootNode = xmlDocument.CreateElement("BE05");
-            xmlDocument.AppendChild(rootNode);
-            xmlDocument.InsertBefore(xmldecl, rootNode);
         }
 
         public void LoadEngine(string dllFolder)
@@ -74,6 +57,17 @@ namespace Bison.Core.BE18
 
         public void WriteToXml()
         {
+            // Create Xml Document
+            xmlDocument = new XmlDocument();
+            XmlDeclaration xmldecl = xmlDocument.CreateXmlDeclaration("1.0", null, null);
+            xmldecl.Encoding = "ISO-8859-1";
+
+            // Create Root node
+            XmlElement rootNode = xmlDocument.CreateElement("BE05");
+            xmlDocument.AppendChild(rootNode);
+            xmlDocument.InsertBefore(xmldecl, rootNode);
+
+            Data.ToXml(xmlDocument, xmlDocument.DocumentElement);
             xmlDocument.Save(OutputPath);
         }
 
