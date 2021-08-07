@@ -23,5 +23,6 @@ namespace Bison.Core.BE18.Attributes
     {
         public string XmlElementName { get; set; }
         public ValueType ValueType { get; set; }
+        public string NullValue { get; set; } = null;
     }
 }

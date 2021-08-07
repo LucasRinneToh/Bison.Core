@@ -15,14 +15,17 @@ namespace Bison.Core.BE18
     /// </summary>
     public abstract class BeElement
     {
+        // Unique identifier (limited to 10-characters with '#'-prefix)
         [FieldAttribute(XmlElementName = "rid", ValueType = Attributes.ValueType.PrimaryKey)]
-        public int rid { get; set; } // Unique identifier (limited to 10-characters with '#'-prefix)
+        public int Rid { get; set; }
+
+        // Common (non-unique) property for all elements
         [FieldAttribute(XmlElementName = "id", ValueType = Attributes.ValueType.String)]
-        public string id { get; set; } // Common (non-unique) property for all elements
+        public string id { get; set; } 
 
         public BeElement()
         {
-            this.rid = 1;
+            this.Rid = 1;
         }
 
         private bool PropertyHasAttribute(PropertyInfo property)
@@ -31,7 +34,7 @@ namespace Bison.Core.BE18
             return (attribute == null ? false : true);
         }
 
-        private string SerializeProperty(PropertyInfo property, Attributes.ValueType type)
+        private string SerializeProperty(PropertyInfo property, Attributes.ValueType type, string nullValue)
         {
             var propertyValue = property.GetValue(this, null);
             if (propertyValue != null)
@@ -47,13 +50,13 @@ namespace Bison.Core.BE18
                     case Attributes.ValueType.Bool:
                         return ((bool)propertyValue == true ? ".T." : ".F.");
                     case Attributes.ValueType.OneToOne:
-                        return "#" + ((BeElement)propertyValue).rid;
+                        return "#" + ((BeElement)propertyValue).Rid;
                     case Attributes.ValueType.OneToMany:
                         IEnumerable<BeElement> instances = (IEnumerable<BeElement>)propertyValue;
                         List<string> rids = new List<string>();
                         foreach (BeElement instance in instances)
                         {
-                            rids.Add("#" + instance.rid);
+                            rids.Add("#" + instance.Rid);
                         }
                         return (rids.Count > 0 ? String.Join(" ", rids) : string.Empty);
                     default:
@@ -61,7 +64,7 @@ namespace Bison.Core.BE18
                 }
             } else
             {
-                return string.Empty;
+                return nullValue;
             }
         }
 
@@ -89,17 +92,18 @@ namespace Bison.Core.BE18
                     // Convert property value to XML output
                     FieldAttribute attribute = property.GetCustomAttribute<FieldAttribute>();
                     Attributes.ValueType type = attribute.ValueType;
+                    string nullValue = attribute.NullValue;
 
                     // Get property value
                     var propertyValue = property.GetValue(this, null);
 
                     if (type == Attributes.ValueType.PrimaryKey) { 
-                        element.SetAttribute("rid", "#" + rid.ToString()); 
+                        element.SetAttribute("rid", "#" + Rid.ToString()); 
                     } 
                     else {
                         if (propertyValue != null)
                         {
-                            string elementValue = SerializeProperty(property, type);
+                            string elementValue = SerializeProperty(property, type, nullValue);
                             XmlElement childNode = document.CreateElement(attribute.XmlElementName);
                             if (!string.IsNullOrEmpty(elementValue))
                             {
@@ -107,12 +111,12 @@ namespace Bison.Core.BE18
                             }
                             element.AppendChild(childNode);
 
+                            // Handle iteration through children
                             if (type == Attributes.ValueType.OneToOne)
                             {
                                 BeElement child = (BeElement)property.GetValue(this, null);
                                 child.ToXml(document, rootNode);
                             }
-
                             if (type == Attributes.ValueType.OneToMany)
                             {
                                 IEnumerable<BeElement> children = (IEnumerable<BeElement>)property.GetValue(this, null);
@@ -121,6 +125,11 @@ namespace Bison.Core.BE18
                                     child.ToXml(document, rootNode);
                                 }
                             }
+                        } else
+                        {
+                            XmlElement childNode = document.CreateElement(attribute.XmlElementName);
+                            childNode.InnerText = nullValue;
+                            element.AppendChild(childNode);
                         }
                     }
                 }
