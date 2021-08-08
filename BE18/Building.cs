@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Bison.Core.BE18.Attributes;
 using Bison.Core.BE18.Elements.ClimateScreen;
+using Bison.Core.BE18.Elements.Cooling;
 using Bison.Core.BE18.Elements.InternalHeat;
 using Bison.Core.BE18.Elements.DomesticHotWater;
 using Bison.Core.BE18.Elements.Ventilation;

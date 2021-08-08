@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18
+namespace Bison.Core.BE18.Elements.Cooling
 {
     [ModelAttribute(ElementName = "COOLING")]
     public class Cooling : BeElement
@@ -31,7 +31,6 @@ namespace Bison.Core.BE18
             this.HeatCapacity = heatCapacity;
             this.HeatDemand = heatDemand;
         }
-
 
         // Sfb code
         [FieldAttribute(XmlElementName = "sfb", ValueType = Attributes.ValueType.String)]
