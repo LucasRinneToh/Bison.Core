@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
 using System.Reflection;
 using Bison.Core.BE18.Attributes;
@@ -21,11 +17,20 @@ namespace Bison.Core.BE18
 
         // Common (non-unique) property for all elements
         [FieldAttribute(XmlElementName = "id", ValueType = Attributes.ValueType.String)]
-        public string id { get; set; } 
+        public string id { get; set; }
 
-        public BeElement()
+
+        public BeElement(int rid = -1)
         {
-            this.Rid = 1;
+            if (rid == -1)
+            {
+                Random random = new Random();
+                int randomRid = random.Next(0, 10000000);
+                this.Rid = randomRid;
+            } else
+            {
+                this.Rid = rid;
+            }
         }
 
         private bool PropertyHasAttribute(PropertyInfo property)

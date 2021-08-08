@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18
+namespace Bison.Core.BE18.Elements.ClimateScreen
 {
     [ModelAttribute(ElementName = "COLD_BRIDGE")]
     public class ColdBridge : BeElement

@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
-using System.Threading.Tasks;
 using System.Xml;
-using System.Runtime;
 using System.Globalization;
 using System.Threading;
 
@@ -22,9 +17,11 @@ namespace Bison.Core.BE18
         [DllImport("kernel32.dll", CharSet = CharSet.Auto, SetLastError = true)]
         static extern bool SetDllDirectory(string lpPathName);
 
+        // File locations
         private string OutputPath { get; set; } // Path to output .bexml file
         private string Be18Folder { get; set; } // Path to folder that includes the Be18Eng.dll file
-        
+
+        // Data
         public XmlDocument xmlDocument;
         public BE05 Data;
         public Building Building { get; set; } // Direct accessor to building
@@ -46,6 +43,7 @@ namespace Bison.Core.BE18
             this.Be18Folder = Be18Folder;
         }
 
+        // Check if dll can be found
         public void LoadEngine(string dllFolder)
         {
             if (!Directory.Exists(dllFolder))
@@ -83,10 +81,11 @@ namespace Bison.Core.BE18
             int licenceValid = IsLicenseValid();
 
             // Read XML file
-            string testPath = File.ReadAllText(@"C:\Users\l_toh\OneDrive\Skrivebord\Projects\Bison.Core\Testing\Eksempel_v9_Administration.bexml");
+            Data.ToXml(xmlDocument, xmlDocument.DocumentElement);
+            string projectData = xmlDocument.OuterXml;
 
             int bufferSize = 100000;
-            StringBuilder modelStringBuffer = new StringBuilder(testPath, bufferSize);
+            StringBuilder modelStringBuffer = new StringBuilder(projectData, bufferSize);
             StringBuilder mem = new StringBuilder(bufferSize);
             int status = bufferSize;
 
