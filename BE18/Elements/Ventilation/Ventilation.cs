@@ -15,7 +15,16 @@ namespace Bison.Core.BE18.Elements.Ventilation
             double area = 0,
             double q_mech_winter_day = 0,
             double q_mech_summer_day = 0,
-            double q_mech_summer_night = 0
+            double q_mech_summer_night = 0,
+            double q_nat_winter_day = 0,
+            double q_nat_winter_night = 0,
+            double q_nat_summer_day = 0,
+            double q_nat_summer_night = 0,
+            double heatEffeciency = 0.85,
+            double inletTemp = 18,
+            bool hasElReheater = false,
+            double SEL = 800,
+            double usageFactor = 1
             )
         {
             this.id = name;
@@ -23,7 +32,16 @@ namespace Bison.Core.BE18.Elements.Ventilation
             this.q_mech_winter_day = q_mech_winter_day;
             this.q_mech_summer_day = q_mech_summer_day;
             this.q_mech_summer_night = q_mech_summer_night;
-
+            this.q_nat_winter_day = q_nat_winter_day;
+            this.q_nat_winter_night = q_nat_winter_night;
+            this.q_nat_summer_day = q_nat_summer_day;
+            this.q_nat_summer_night = q_nat_summer_night;
+            this.HeatEffeciency = heatEffeciency;
+            this.InletTemp = inletTemp;
+            this.HasElReheater = hasElReheater;
+            this.SEL = SEL;
+            this.part = 0;
+            this.UsageFactor = usageFactor;
         }
 
         // Sfb code
@@ -48,19 +66,19 @@ namespace Bison.Core.BE18.Elements.Ventilation
 
         // Natural ventilation (winter, occupancy) [L/s*m2]
         [FieldAttribute(XmlElementName = "qid", ValueType = Attributes.ValueType.Double)]
-        public double qid { get; set; }
+        public double q_nat_winter_day { get; set; }
 
         // Natural ventilation (winter, night) [L/s*m2]
         [FieldAttribute(XmlElementName = "qis", ValueType = Attributes.ValueType.Double)]
-        public double qis { get; set; }
+        public double q_nat_winter_night { get; set; }
 
         // Natural ventilation (summer, occupancy) [L/s*m2]
         [FieldAttribute(XmlElementName = "qid_day", ValueType = Attributes.ValueType.Double)]
-        public double qid_day { get; set; }
+        public double q_nat_summer_day{ get; set; }
 
         // Natural ventilation (summer, night) [L/s*m2]
         [FieldAttribute(XmlElementName = "qis_night", ValueType = Attributes.ValueType.Double)]
-        public double qis_night { get; set; }
+        public double q_nat_summer_night { get; set; }
 
         // Heat effeciency (0-1) [-]
         [FieldAttribute(XmlElementName = "nvgv", ValueType = Attributes.ValueType.Double)]
@@ -72,7 +90,7 @@ namespace Bison.Core.BE18.Elements.Ventilation
 
         // Has reheater battery?
         [FieldAttribute(XmlElementName = "el_vf", ValueType = Attributes.ValueType.Bool)]
-        public double HasReheater { get; set; }        
+        public bool HasElReheater { get; set; }        
 
         // Specific fan power (SEL) [kJ/m3]
         [FieldAttribute(XmlElementName = "sel", ValueType = Attributes.ValueType.Double)]
