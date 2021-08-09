@@ -46,7 +46,7 @@
     <Compile Include="BE18\Attributes\FieldAttribute.cs" />
     <Compile Include="BE18\Attributes\ModelAttribute.cs" />
     <Compile Include="BE18\Elements\Building\BE05.cs" />
-    <Compile Include="BE18\BeElement.cs" />
+    <Compile Include="BE18\Elements\BeElement.cs" />
     <Compile Include="BE18\Elements\Building\Building.cs" />
     <Compile Include="BE18\Elements\Cooling\Cooling.cs" />
     <Compile Include="BE18\Elements\Utils\Description.cs" />
