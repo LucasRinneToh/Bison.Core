@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bison.Core.BE18.Attributes;
+﻿using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18.Elements.Cooling
+namespace Bison.Core.BE18.Elements
 {
     [ModelAttribute(ElementName = "COOLING")]
     public class Cooling : BeElement

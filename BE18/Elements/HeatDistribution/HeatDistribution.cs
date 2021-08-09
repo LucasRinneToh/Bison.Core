@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18.Elements.HeatDistribution
+namespace Bison.Core.BE18.Elements
 {
     [ModelAttribute(ElementName = "HEAT_DISTRIBUTION")]
     public class HeatDistribution : BeElement

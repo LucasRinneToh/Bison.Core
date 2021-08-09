@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18.Elements.Ventilation
+namespace Bison.Core.BE18.Elements
 {
     [ModelAttribute(ElementName = "VENTILATION")]
     public class Ventilation : BeElement

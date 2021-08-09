@@ -5,6 +5,7 @@ using System.Text;
 using System.Xml;
 using System.Globalization;
 using System.Threading;
+using Bison.Core.BE18.Elements;
 
 namespace Bison.Core.BE18
 {

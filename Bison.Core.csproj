@@ -45,20 +45,47 @@
   <ItemGroup>
     <Compile Include="BE18\Attributes\FieldAttribute.cs" />
     <Compile Include="BE18\Attributes\ModelAttribute.cs" />
-    <Compile Include="BE18\BE05.cs" />
+    <Compile Include="BE18\Elements\Building\BE05.cs" />
     <Compile Include="BE18\BeElement.cs" />
-    <Compile Include="BE18\Building.cs" />
-    <Compile Include="BE18\ColdBridge.cs" />
-    <Compile Include="BE18\Lighting.cs" />
-    <Compile Include="BE18\LightLoad.cs" />
+    <Compile Include="BE18\Elements\Building\Building.cs" />
+    <Compile Include="BE18\Elements\Cooling\Cooling.cs" />
+    <Compile Include="BE18\Elements\Utils\Description.cs" />
+    <Compile Include="BE18\Elements\ClimateScreen\ColdBridge.cs" />
+    <Compile Include="BE18\Elements\HeatDistribution\DimTemp.cs" />
+    <Compile Include="BE18\Elements\HeatDistribution\DistributionPump.cs" />
+    <Compile Include="BE18\Elements\DomesticHotWater\DhwCirculationPump.cs" />
+    <Compile Include="BE18\Elements\DomesticHotWater\DhwElectricHeater.cs" />
+    <Compile Include="BE18\Elements\DomesticHotWater\DhwGasHeater.cs" />
+    <Compile Include="BE18\Elements\DomesticHotWater\DhwPipe.cs" />
+    <Compile Include="BE18\Elements\DomesticHotWater\DhwSystem.cs" />
+    <Compile Include="BE18\Elements\DomesticHotWater\DhwTank.cs" />
+    <Compile Include="BE18\Elements\HeatDistribution\HeatingPipe.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\Boiler.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\DistrictHeatExchanger.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\HeatingSystems.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\HeatPump.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\PhotovoltaicCell.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\SolarCollector.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\SupplementalRoomHeating.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\VpComp.cs" />
+    <Compile Include="BE18\Elements\HeatingSystems\Windmill.cs" />
+    <Compile Include="BE18\Elements\HeatDistribution\HeatDistribution.cs" />
+    <Compile Include="BE18\Elements\Lighting\Lighting.cs" />
+    <Compile Include="BE18\Elements\Lighting\LightLoad.cs" />
     <Compile Include="BE18\Project.cs" />
-    <Compile Include="BE18\OpaqueConstruction.cs" />
-    <Compile Include="BE18\Shading.cs" />
-    <Compile Include="BE18\TransparentConstruction.cs" />
-    <Compile Include="BE18\Usage.cs" />
-    <Compile Include="BE18\UsageLoad.cs" />
-    <Compile Include="BE18\Ventilation.cs" />
+    <Compile Include="BE18\Elements\ClimateScreen\OpaqueConstruction.cs" />
+    <Compile Include="BE18\Elements\ClimateScreen\Shading.cs" />
+    <Compile Include="BE18\Elements\ClimateScreen\TransparentConstruction.cs" />
+    <Compile Include="BE18\Elements\InternalHeat\Usage.cs" />
+    <Compile Include="BE18\Elements\InternalHeat\UsageLoad.cs" />
+    <Compile Include="BE18\Elements\Ventilation\Ventilation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="BE18\README.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="BE18\Elements\ElectricityConsumption\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

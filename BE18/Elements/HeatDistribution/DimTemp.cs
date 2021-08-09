@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Bison.Core.BE18.Attributes;
+﻿using Bison.Core.BE18.Attributes;
 
-namespace Bison.Core.BE18
+namespace Bison.Core.BE18.Elements
 {
     [ModelAttribute(ElementName = "DIM_TEMP")]
     public class DimTemp : BeElement
@@ -17,7 +12,7 @@ namespace Bison.Core.BE18
         }
 
         // Temperature [*C]
-        [FieldAttribute(XmlElementName = "temp", ValueType = Attributes.ValueType.Double)]
+        [FieldAttribute(XmlElementName = "temp", ValueType = ValueType.Double)]
         public double Temperature { get; set; }
     }
 }
