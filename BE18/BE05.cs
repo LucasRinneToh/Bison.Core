@@ -7,6 +7,9 @@ using Bison.Core.BE18.Attributes;
 
 namespace Bison.Core.BE18
 {
+    /// <summary>
+    /// This is the root element for Be18 projects
+    /// </summary>
     [ModelAttribute(ElementName = "BE05")]
     public class BE05 : BeElement
     {

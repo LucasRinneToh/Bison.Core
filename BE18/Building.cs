@@ -11,6 +11,10 @@ using Bison.Core.BE18.Elements.Lighting;
 
 namespace Bison.Core.BE18
 {
+    /// <summary>
+    /// Building class
+    /// This class is required for projects
+    /// </summary>
     [ModelAttribute(ElementName = "BUILDING")]
     public class Building : BeElement
     {
