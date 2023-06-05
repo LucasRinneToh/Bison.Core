@@ -79,6 +79,26 @@
     <Compile Include="BE18\Elements\InternalHeat\Usage.cs" />
     <Compile Include="BE18\Elements\InternalHeat\UsageLoad.cs" />
     <Compile Include="BE18\Elements\Ventilation\Ventilation.cs" />
+    <Compile Include="BSim\Attributes\BSimXmlModelProperty.cs" />
+    <Compile Include="BSim\Attributes\BSimXmlModel.cs" />
+    <Compile Include="BSim\Elements\BSimElement.cs" />
+    <Compile Include="BSim\Elements\Building.cs" />
+    <Compile Include="BSim\Elements\Cell.cs" />
+    <Compile Include="BSim\Elements\Edge.cs" />
+    <Compile Include="BSim\Elements\Face.cs" />
+    <Compile Include="BSim\Elements\FaceSide.cs" />
+    <Compile Include="BSim\Elements\Ground.cs" />
+    <Compile Include="BSim\Elements\HeatingControl.cs" />
+    <Compile Include="BSim\Elements\Location.cs" />
+    <Compile Include="BSim\Elements\Project.cs" />
+    <Compile Include="BSim\Elements\Room.cs" />
+    <Compile Include="BSim\Elements\Schedule.cs" />
+    <Compile Include="BSim\Elements\Site.cs" />
+    <Compile Include="BSim\Elements\System.cs" />
+    <Compile Include="BSim\Elements\ThermalZone.cs" />
+    <Compile Include="BSim\Elements\TimeDefinition.cs" />
+    <Compile Include="BSim\Elements\Vector3D.cs" />
+    <Compile Include="BSim\Elements\Vertex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
