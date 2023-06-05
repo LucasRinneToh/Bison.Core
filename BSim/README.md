@@ -12,6 +12,7 @@ Upcoming features:
 ## Limitations
 - BSim is not  open-sourced or free-to-use software and requires a valid licence. 
 - I am not aware of any method for running simulations externally. This must be done through the BSim application UI or the batch UI. 
+- The library does not contain utilities to check validity of the model geometry. This must be handled in the client application.
 
 ## Known issues
 - It is a good idea to clean the model in the BSim application UI to ensure that BSim understands the model. 
